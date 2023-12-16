@@ -1,0 +1,1 @@
+Separei o html em header e footer para classificar melhor o esqueleto da página e ajudar na apresentação do conteúdo no body, depois utilizei tags semânticas e class em algumas delas para facilitar a utilização do grid e organizar melhor as box de elementos na página.
