@@ -12,15 +12,15 @@ interface PostProps {
   postUrl?: string;
   likeClick: boolean;
 }
-
-const TrocarCoracao: React.FC<PostProps> = (props) => {
-  const [icone, setIcone] = useState(props.likeClick ? <FaHeart /> : <FaRegHeart />);
-  const [clicked, setClicked] = useState(props.likeClick);
+function TrocarCoracao({likeClick}: PostProps) {
+  const [icone, setIcone] = useState(likeClick ? <FaHeart /> : <FaRegHeart />);
+  const [clicked, setClicked] = useState(likeClick);
 
   const handleClick = () => {
     if(clicked) {
       setIcone(<FaHeart />);
       setClicked(false);
+      likeClick = true;
     } else {
       setIcone(<FaRegHeart />);
       setClicked(true);
@@ -30,7 +30,7 @@ const TrocarCoracao: React.FC<PostProps> = (props) => {
   return (
     <button className="flex mb-2 mt-2 " onClick={handleClick}>
       {icone}
-      {props.likeClick ? true : false}
+      {likeClick ? true : false}
     </button>
   );
 };
@@ -71,7 +71,7 @@ function InfosPost({username, description, hashtags, likes, likeClick}: PostProp
     <div className='flex flex-col ml-20'>
       <div className='flex items-center space-x-4 mb-2 mt-2'>
         <button>
-          <TrocarCoracao />
+          <TrocarCoracao likeClick= {likeClick} />
         </button>
         <button><FaRegComment /></button>
         <button><FaRegShareSquare /></button>
